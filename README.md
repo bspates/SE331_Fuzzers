@@ -10,6 +10,9 @@ driver will use, the only compatable browser choices are Firefox and Chrome.
 Every subsquent line in the config.txt file is considered a URL for the 
 script to Fuzz.
 
+attributeList.txt contains the list of input attributes to search for on
+fuzzed website.
+
 Currently Script only enumerates the attack surface of the urls supplied.
 The Attack surface report is generated as a JSON text file called FuzzRep.txt
 
