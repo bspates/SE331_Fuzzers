@@ -3,8 +3,8 @@ require 'test/unit'
 
 class InputFuzzer < Fuzzer
 	
-	def initialize(d, t, c)
-		super(d, t, c)
+	def initialize(d, t, c, f)
+		super(d, t, c, f)
 		@passwords = loadPasswords
 		@usernames = loadUsernames
 	end
@@ -50,6 +50,7 @@ class InputFuzzer < Fuzzer
             	  self.click(@submit)
             	  
       	        if(loginFailed?)
+      	          
       	        else
       	          puts "login successful with username: #{user} and password #{pass}"
             	  end
@@ -99,7 +100,7 @@ class InputFuzzer < Fuzzer
     self.getUrl(@driver.current_url)
     
     if(@driver.find_element(:tag_name => "body").text.include?("failed") or
-      @driver.find_element(:tag_name => "body").text.include?("incorrent"))
+      @driver.find_element(:tag_name => "body").text.include?("incorrect"))
       return true
     elsif(@driver.current_url == @url)
       return true

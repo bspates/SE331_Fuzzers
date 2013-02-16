@@ -6,11 +6,10 @@
 	end
 	
 	def checkForXSS()
-		count = 0
 		begin	
 			while((a = @driver.switch_to.alert))
-				if(a.text == "XSS")
-					count += 1
+				if(a.text == "XSS" && !(@retArray.include? xssStr))
+					@file.puts "XSS detected"
 				end
 				a.dismiss
 			end
@@ -40,6 +39,7 @@
 	end
 	
 	def fuzz(vector, input, url)
+		@retArray = Array.new(0)
 		if(input != nil && input != 0)
 			if(@random == true)
 				vectorKey = randomizer(vector)
@@ -57,7 +57,7 @@
 					self.submitInput(submit)
 					self.getUrl(url)
 				end
-				puts checkForXSS()
+				checkForXSS(xssStr)
 					
 			else
 				input.each do | jsonEle |
@@ -81,7 +81,7 @@
 						self.submitInput(submit)
 						self.getUrl(url)
 					end
-					puts checkForXSS()
+					checkForXSS()
 				end
 			end
 		end

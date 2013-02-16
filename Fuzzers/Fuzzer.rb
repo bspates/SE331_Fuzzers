@@ -1,7 +1,8 @@
 class Fuzzer 
 	
-	def initialize(d, t, c)
+	def initialize(d, t, c, f)
 		@driver = d	
+		@file = f
 		@time_gap = t
 		if(c == "random")
 			@random = true
@@ -45,6 +46,13 @@ class Fuzzer
 				puts "not proper data set"
 			end
 			return key
+	end
+	
+	def save(hash, fileString, mode)
+		document = JSON.pretty_generate(hash)
+		File.open(fileString, mode) do |file|
+			file.write(document)
+		end
 	end
 
 end

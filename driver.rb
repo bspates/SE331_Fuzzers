@@ -23,8 +23,11 @@ if(ARGV[0] == nil)
 else
 	@result = setup(FuzzConfigurer.new)
 end
-stageFuzz = StageFuzzer.new(@web_driver, @time_gap, @complete, @guessing)
+
+@file = File.open("FuzzedResult.txt", "w+")
+stageFuzz = StageFuzzer.new(@web_driver, @time_gap, @complete, @guessing, @file)
 puts "Fuzzing..."
-stageFuzz.fuzz(@result)
+fuzzedResults = stageFuzz.fuzz(@result)
+stageFuzz.save(fuzzedResult, "FuzzResult.txt", "w+")
 
 @web_driver.quit

@@ -29,7 +29,7 @@ class SQLFuzzer < Fuzzer
 	def checkSQL(pageBefore)
 		pageAfter = @driver.page_source
 		if(pageBefore != pageAfter)
-			puts "sql injection possible"
+			@file.puts "SQL Injection detected"
 		end
 	end
 	def fuzz(vector, input, url)
@@ -77,9 +77,7 @@ class SQLFuzzer < Fuzzer
 							pageBefore = @driver.page_source
 							self.submitInput(submit)
 							self.getUrl(url)
-
 							checkSQL(pageBefore)
-
 						end
 					end
 				end
