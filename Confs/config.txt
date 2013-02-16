@@ -1,0 +1,7 @@
+Firefox
+0
+complete
+off
+http://127.0.0.1/dvwa/login.php
+http://127.0.0.1:8080/jpetstore
+http://127.0.0.1:8080/bodgeit

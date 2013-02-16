@@ -1,0 +1,12 @@
+{
+	"usernames": [
+		"j2ee",
+		"admin",
+		"user",
+		"root",
+		"guest",
+		"test",
+		"info",
+		"administrator"
+	]
+}

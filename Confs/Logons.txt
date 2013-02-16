@@ -1,0 +1,8 @@
+{
+	"http://127.0.0.1/dvwa/login.php":  [
+	
+		["name", "username", "send_keys", "admin"],
+		["name", "password", "send_keys", "password"],
+		["name", "Login", "click", "submit" ]
+	]
+}
